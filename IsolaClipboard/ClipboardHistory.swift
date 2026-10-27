@@ -68,7 +68,13 @@ final class ClipboardHistory: ObservableObject {
             return
         }
 
-        if let image = pasteboard.readObjects(forClasses: [NSImage.self], options: nil)?.first as? NSImage {
+        // NSImage can decode rich-text pasteboard representations as a rendered image.
+        // Only classify the clipboard item as an image when it explicitly advertises an image UTI.
+        let advertisesImage = pasteboardTypes.contains { type in
+            UTType(type.rawValue)?.conforms(to: .image) == true
+        }
+        if advertisesImage,
+           let image = pasteboard.readObjects(forClasses: [NSImage.self], options: nil)?.first as? NSImage {
             ingest(.image(image), sourceTypes: pasteboardTypes)
             return
         }
