@@ -22,7 +22,7 @@ executable=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$staging_ap
 [ "$version" = "1.0.0" ] || { echo "Unexpected version: $version" >&2; exit 1; }
 [ "$bundle_id" = "it.lucazucconi.IsolaClipboard" ] || { echo "Unexpected bundle ID: $bundle_id" >&2; exit 1; }
 [ -s "$staging_app/Contents/Resources/AppIcon.icns" ] || { echo "Missing app icon" >&2; exit 1; }
-file "$staging_app/Contents/MacOS/$executable" | rg -q 'arm64' || { echo "Release executable is not ARM64" >&2; exit 1; }
+file "$staging_app/Contents/MacOS/$executable" | grep -q 'arm64' || { echo "Release executable is not ARM64" >&2; exit 1; }
 
 mkdir -p "$release_dir"
 if [ -d "$release_app" ]; then

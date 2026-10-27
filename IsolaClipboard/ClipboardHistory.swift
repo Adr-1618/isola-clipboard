@@ -237,9 +237,33 @@ struct ClipboardEntry: Identifiable {
 
     func makePasteboardWriter() -> NSPasteboardWriting {
         switch content {
-        case .text(let text): text as NSString
-        case .url(let url), .file(let url): url as NSURL
-        case .image(let image): image
+        case .text(let text): return text as NSString
+        case .url(let url), .file(let url): return url as NSURL
+        case .image(let image):
+            guard let pngData = image.tiffRepresentation
+                .flatMap(NSBitmapImageRep.init(data:))?
+                .representation(using: .png, properties: [:])
+            else {
+                return image
+            }
+
+            // Finder accepts image files as file URLs when dropping into folders.
+            // Keep native PNG/TIFF representations on the same item for image editors.
+            let exportURL = FileManager.default.temporaryDirectory
+                .appendingPathComponent("IsolaClipboard-\(UUID().uuidString).png")
+            do {
+                try pngData.write(to: exportURL, options: .atomic)
+            } catch {
+                return image
+            }
+
+            let item = NSPasteboardItem()
+            item.setString(exportURL.absoluteString, forType: .fileURL)
+            item.setData(pngData, forType: .png)
+            if let tiffData = image.tiffRepresentation {
+                item.setData(tiffData, forType: .tiff)
+            }
+            return item
         }
     }
 
