@@ -62,7 +62,7 @@ struct ClipboardHistorySmoke {
             try expect(imageItem.data(forType: .png) != nil, "image drag writer lost its PNG representation")
             try? FileManager.default.removeItem(at: exportURL)
         } else {
-            throw SmokeFailure(message: "image drag writer did not provide a readable file URL")
+            throw NSError(domain: "IsolaClipboardSmoke", code: 1, userInfo: [NSLocalizedDescriptionKey: "image drag writer did not provide a readable file URL"])
         }
         try expect(history.entries.contains(where: { $0.subtitle == "Immagine" }), "image did not produce a thumbnail entry")
 

@@ -250,7 +250,7 @@ struct ClipboardEntry: Identifiable {
             // Finder accepts image files as file URLs when dropping into folders.
             // Keep native PNG/TIFF representations on the same item for image editors.
             let exportURL = FileManager.default.temporaryDirectory
-                .appendingPathComponent("IsolaClipboard-\\(UUID().uuidString).png")
+                .appendingPathComponent("IsolaClipboard-\(UUID().uuidString).png")
             do {
                 try pngData.write(to: exportURL, options: .atomic)
             } catch {
