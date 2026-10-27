@@ -1,0 +1,36 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+		A10000000000000000000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* AppDelegate.swift */; };
+		A10000000000000000000002 /* IsolaClipboardMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* IsolaClipboardMain.swift */; };
+		A10000000000000000000004 /* ClipboardHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004 /* ClipboardHistory.swift */; };
+		A10000000000000000000005 /* SystemIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* SystemIntegration.swift */; };
+		A10000000000000000000006 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000006 /* AppIcon.icns */; };
+		A20000000000000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A20000000000000000000002 /* IsolaClipboardMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsolaClipboardMain.swift; sourceTree = "<group>"; };
+		A20000000000000000000003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A20000000000000000000004 /* ClipboardHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardHistory.swift; sourceTree = "<group>"; };
+		A20000000000000000000005 /* SystemIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegration.swift; sourceTree = "<group>"; };
+		A20000000000000000000006 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		A30000000000000000000001 /* IsolaClipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IsolaClipboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A40000000000000000000001 /* IsolaClipboard */ = {isa = PBXGroup; children = (A20000000000000000000001 /* AppDelegate.swift */, A20000000000000000000002 /* IsolaClipboardMain.swift */, A20000000000000000000003 /* Info.plist */, A20000000000000000000004 /* ClipboardHistory.swift */, A20000000000000000000005 /* SystemIntegration.swift */, A40000000000000000000004 /* Resources */,); path = IsolaClipboard; sourceTree = "<group>"; };
+		A40000000000000000000002 = {isa = PBXGroup; children = (A40000000000000000000001 /* IsolaClipboard */, A40000000000000000000003 /* Products */,); sourceTree = "<group>"; };
+		A40000000000000000000003 /* Products */ = {isa = PBXGroup; children = (A30000000000000000000001 /* IsolaClipboard.app */,); name = Products; sourceTree = "<group>"; };
+		A40000000000000000000004 /* Resources */ = {isa = PBXGroup; children = (A20000000000000000000006 /* AppIcon.icns */,); path = Resources; sourceTree = "<group>"; };
+		A50000000000000000000001 /* IsolaClipboard */ = {isa = PBXNativeTarget; buildConfigurationList = A90000000000000000000002; buildPhases = (A60000000000000000000001 /* Sources */, A60000000000000000000002 /* Frameworks */, A60000000000000000000003 /* Resources */,); buildRules = (); dependencies = (); name = IsolaClipboard; productName = IsolaClipboard; productReference = A30000000000000000000001 /* IsolaClipboard.app */; productType = "com.apple.product-type.application"; };
+		A60000000000000000000001 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000001 /* AppDelegate.swift in Sources */, A10000000000000000000002 /* IsolaClipboardMain.swift in Sources */, A10000000000000000000004 /* ClipboardHistory.swift in Sources */, A10000000000000000000005 /* SystemIntegration.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+		A60000000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A60000000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000006 /* AppIcon.icns in Resources */,); runOnlyForDeploymentPostprocessing = 0; };
+		A70000000000000000000001 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SWIFT_VERSION = 5.0; PRODUCT_BUNDLE_IDENTIFIER = it.lucazucconi.IsolaClipboard; PRODUCT_NAME = "$(TARGET_NAME)"; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = IsolaClipboard/Info.plist; CODE_SIGN_IDENTITY = "-"; CODE_SIGNING_ALLOWED = YES; }; name = Debug; };
+		A70000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SWIFT_VERSION = 5.0; PRODUCT_BUNDLE_IDENTIFIER = it.lucazucconi.IsolaClipboard; PRODUCT_NAME = "$(TARGET_NAME)"; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = IsolaClipboard/Info.plist; CODE_SIGN_IDENTITY = "-"; CODE_SIGNING_ALLOWED = YES; }; name = Release; };
+		A80000000000000000000001 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Debug; };
+		A80000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {MACOSX_DEPLOYMENT_TARGET = 14.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Release; };
+		A90000000000000000000001 /* Project configuration list */ = {isa = XCConfigurationList; buildConfigurations = (A80000000000000000000001 /* Debug */, A80000000000000000000002 /* Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A90000000000000000000002 /* Target configuration list */ = {isa = XCConfigurationList; buildConfigurations = (A70000000000000000000001 /* Debug */, A70000000000000000000002 /* Release */,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A90000000000000000000003 = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 1600; }; buildConfigurationList = A90000000000000000000001; compatibilityVersion = "Xcode 14.0"; developmentRegion = it; hasScannedForEncodings = 0; knownRegions = (it, en, Base,); mainGroup = A40000000000000000000002; productRefGroup = A40000000000000000000003 /* Products */; projectDirPath = ""; projectRoot = ""; targets = (A50000000000000000000001 /* IsolaClipboard */,); };
+	};
+	rootObject = A90000000000000000000003 /* Project object */;
+}

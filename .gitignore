@@ -1,0 +1,18 @@
+.DS_Store
+
+# Local builds and packaged app bundles
+/build/
+/release/
+/DerivedData/
+
+# Xcode user-specific state
+*.xcuserstate
+xcuserdata/
+
+# Temporary or backup source copies
+*.bak
+*.backup
+
+# Swift Package Manager artifacts
+.build/
+.swiftpm/xcode/package.xcworkspace/
