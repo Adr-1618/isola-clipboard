@@ -237,8 +237,8 @@ struct ClipboardEntry: Identifiable {
 
     func makePasteboardWriter() -> NSPasteboardWriting {
         switch content {
-        case .text(let text): text as NSString
-        case .url(let url), .file(let url): url as NSURL
+        case .text(let text): return text as NSString
+        case .url(let url), .file(let url): return url as NSURL
         case .image(let image):
             guard let pngData = image.tiffRepresentation
                 .flatMap(NSBitmapImageRep.init(data:))?
