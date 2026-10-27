@@ -1,0 +1,18 @@
+name: macOS smoke tests
+
+on:
+  push:
+    branches:
+      - main
+      - fix/image-drag-to-finder
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  smoke:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run clipboard smoke tests
+        run: ./scripts/run-smoke-tests.sh

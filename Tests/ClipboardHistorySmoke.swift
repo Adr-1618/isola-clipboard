@@ -50,7 +50,20 @@ struct ClipboardHistorySmoke {
         try expect(FileManager.default.fileExists(atPath: testFile.path), "creating the drag writer removed or moved the source file")
         try expect(ClipboardEntry(content: .text("drag text")).makePasteboardWriter().writableTypes(for: .general).contains(.string), "text drag writer did not advertise plain text")
         try expect(ClipboardEntry(content: .url(URL(string: "https://example.test/drag")!)).makePasteboardWriter().writableTypes(for: .general).contains(.URL), "URL drag writer did not advertise a URL")
-        try expect(ClipboardEntry(content: .image(image)).makePasteboardWriter().writableTypes(for: .general).contains(.tiff), "image drag writer did not advertise TIFF image data")
+        let imageWriter = ClipboardEntry(content: .image(image)).makePasteboardWriter()
+        let imageDragTypes = imageWriter.writableTypes(for: .general)
+        try expect(imageDragTypes.contains(.fileURL), "image drag writer did not export a file URL for Finder")
+        try expect(imageDragTypes.contains(.png), "image drag writer did not advertise PNG data")
+        try expect(imageDragTypes.contains(.tiff), "image drag writer did not advertise TIFF image data")
+        if let imageItem = imageWriter as? NSPasteboardItem,
+           let fileURLString = imageItem.string(forType: .fileURL),
+           let exportURL = URL(string: fileURLString) {
+            try expect(FileManager.default.fileExists(atPath: exportURL.path), "image drag export file was not created")
+            try expect(imageItem.data(forType: .png) != nil, "image drag writer lost its PNG representation")
+            try? FileManager.default.removeItem(at: exportURL)
+        } else {
+            throw SmokeFailure(message: "image drag writer did not provide a readable file URL")
+        }
         try expect(history.entries.contains(where: { $0.subtitle == "Immagine" }), "image did not produce a thumbnail entry")
 
         history.ingest(.text("test item 6"))
