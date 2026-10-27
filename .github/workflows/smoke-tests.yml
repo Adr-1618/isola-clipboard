@@ -1,4 +1,4 @@
-name: macOS smoke tests
+name: macOS build and smoke tests
 
 on:
   push:
@@ -10,9 +10,20 @@ on:
       - main
 
 jobs:
-  smoke:
+  build-and-smoke:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
       - name: Run clipboard smoke tests
         run: sh scripts/run-smoke-tests.sh
+      - name: Package macOS app
+        run: |
+          sh scripts/package-release.sh
+          ditto -c -k --sequesterRsrc --keepParent "release/Isola Clipboard.app" "IsolaClipboard-macOS-arm64.zip"
+      - name: Upload app package
+        uses: actions/upload-artifact@v4
+        with:
+          name: IsolaClipboard-macOS-arm64
+          path: IsolaClipboard-macOS-arm64.zip
+          if-no-files-found: error
+          retention-days: 14
