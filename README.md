@@ -14,6 +14,10 @@
 
 The current app interface is in Italian. A three-finger trackpad gesture is not built in; the keyboard shortcut can be mapped with BetterTouchTool.
 
+## Download
+
+Check [Releases](https://github.com/Adr-1618/isola-clipboard/releases) for the downloadable Apple Silicon (arm64) ZIP. If no release is listed yet, use the build instructions below. Extract the ZIP and move `Isola Clipboard.app` into Applications. The build is ad-hoc signed and **not Apple-notarized**, so macOS Gatekeeper may block the first launch; if needed, review the warning in System Settings > Privacy & Security and choose Open Anyway only if you trust the source.
+
 ## Build and test
 
 Open `IsolaClipboard.xcodeproj` in Xcode, or run the included scripts on macOS:
@@ -23,7 +27,7 @@ sh scripts/run-smoke-tests.sh
 sh scripts/package-release.sh
 ```
 
-The package script creates an arm64 app bundle in `release/Isola Clipboard.app`. Local builds and packaged bundles are excluded from this repository. The generated bundle uses ad-hoc signing and is not notarized, so this repository does not currently provide a ready-to-install release for other Macs.
+The package script creates an arm64 app bundle in `release/Isola Clipboard.app`. Local builds and packaged bundles are excluded from this repository. The generated bundle uses ad-hoc signing and is not notarized. Maintainers can publish a ZIP using the manually triggered **Publish macOS release** GitHub Actions workflow; release availability depends on that workflow completing successfully.
 
 ## Verification
 
